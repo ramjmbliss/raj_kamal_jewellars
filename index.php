@@ -1,17 +1,8 @@
-<?php
-/**
- * Front to the WordPress application. This file doesn't do anything, but loads
- * wp-blog-header.php which does and tells WordPress to load the theme.
- *
- * @package WordPress
- */
+<?php get_header(); ?>
+	<div id="content" <?php Avada()->layout->add_class( 'content_class' ); ?> <?php Avada()->layout->add_style( 'content_style' ); ?>>
+	<?php get_template_part( 'templates/blog', 'layout' ); ?>
+	</div>
+	<?php do_action( 'fusion_after_content' ); ?>
+<?php get_footer();
 
-/**
- * Tells WordPress to load the WordPress theme and output it.
- *
- * @var bool
- */
-define('WP_USE_THEMES', true);
-
-/** Loads the WordPress Environment and Template */
-require( dirname( __FILE__ ) . '/wp-blog-header.php' );
+// Omit closing PHP tag to avoid "Headers already sent" issues.
